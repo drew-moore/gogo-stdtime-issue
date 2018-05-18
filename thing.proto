@@ -1,0 +1,16 @@
+syntax = "proto3";
+
+package uplevel;
+option go_package="github.com/uplevel-technology/timestamps";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/empty.proto";
+import "gogoproto/gogo.proto";
+
+message Thing {
+    google.protobuf.Timestamp created = 1 [(gogoproto.stdtime) = true];
+}
+
+service ThingService {
+    rpc getThing(google.protobuf.Empty) returns (Thing) {}
+}
